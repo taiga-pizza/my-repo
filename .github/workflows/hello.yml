@@ -3,6 +3,8 @@ on: push
 jobs:
   hello:
     runs-on: ubuntu-latest
+    if: startsWith(github.event.commits[0].message, 'test')
     steps:
       - run: echo "Hello, world"
+      - run: echo "${{ github.event.commits[0].id }}"
       - uses: actions/checkout@v4
